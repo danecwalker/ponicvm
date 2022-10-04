@@ -3,7 +3,7 @@
  <img width=200px height=200px src="./images/logo.png" alt="Ponic logo"></a>
 </p>
 
-<h3 align="center">Ponic</h3>
+<h3 align="center">PonicVM</h3>
 
 <div align="center">
 
@@ -16,8 +16,8 @@
 
 ---
 
-<p align="center"> Ponic is an open source language focused on fast and reliable web development.
-    <br> 
+<p align="center"> PonicVM is a register-based virtual machine for the Ponic language
+ <br> 
 </p>
 
 `Hello World`
