@@ -8,8 +8,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/danecwalker/ponic.svg)](https://github.com/danecwalker/ponic/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/danecwalker/ponic.svg)](https://github.com/danecwalker/ponic/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/danecwalker/ponicvm.svg)](https://github.com/danecwalker/ponicvm/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/danecwalker/ponicvm.svg)](https://github.com/danecwalker/ponicvm/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
