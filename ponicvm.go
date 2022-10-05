@@ -6,7 +6,8 @@
 package main
 
 import (
-	"github.com/danecwalker/ponicvm/devices"
+	"time"
+
 	"github.com/danecwalker/ponicvm/vm"
 )
 
@@ -15,14 +16,10 @@ func main() {
 	io := vm.NewIO()
 
 	// Create 1kb of memory
-	memory := vm.NewMemory(352)
-
-	// Create a screen device
-	screen := devices.NewScreenDevice(80, 13)
+	memory := vm.NewMemory(1024)
 
 	// Add the memory to the io device
 	io.AddDevice(memory)
-	io.AddDevice(screen)
 
 	// Create a new CPU
 	cpu := vm.NewCPU(io)
@@ -31,34 +28,43 @@ func main() {
 	program := []uint64{
 		vm.NOP,
 
-		vm.MOV_MI, 0x160, 0x48,
-		vm.MOV_MI, 0x161, 0x65,
-		vm.MOV_MI, 0x162, 0x6c,
-		vm.MOV_MI, 0x163, 0x6c,
-		vm.MOV_MI, 0x164, 0x6f,
-		vm.MOV_MI, 0x165, 0x20,
-		vm.MOV_MI, 0x166, 0x57,
-		vm.MOV_MI, 0x167, 0x6f,
-		vm.MOV_MI, 0x168, 0x72,
-		vm.MOV_MI, 0x169, 0x6c,
-		vm.MOV_MI, 0x16a, 0x64,
-		vm.MOV_MI, 0x16b, 0x21,
-		vm.MOV_MI, 0x16c, 0x0a,
+		vm.MOV_RI, vm.RAX.U64(), 2,
+		vm.MOV_RI, vm.RBX.U64(), 3,
+		vm.ADD_RR, vm.RAX.U64(), vm.RBX.U64(),
+		vm.MOV_MR, 0x198, vm.RAX.U64(),
+		vm.PUSH_I, 0x1,
+		vm.PUSH_I, 0x4,
+		vm.MOV_RM, vm.R8.U64(), 0x198,
+		vm.POP, vm.R9.U64(),
+		vm.POP, vm.R10.U64(),
+		vm.ADD_RR, vm.R9.U64(), vm.R10.U64(),
+		vm.ADD_RR, vm.R8.U64(), vm.R9.U64(),
+		vm.MOV_RR, vm.RAX.U64(), vm.R8.U64(),
+		vm.NOP,
+		vm.INC_R, vm.RAX.U64(),
+		vm.CMP_RI, vm.RAX.U64(), 12,
+		vm.JNE, 0x108,
 
+		vm.MOV_RI, vm.RCX.U64(), 0x6,
+		vm.NOP,
+		vm.SUB_RI, vm.RAX.U64(), 0x2,
+		vm.LOOP, 0x160,
 		vm.HLT,
 	}
 
 	// Load the program into the cpu
 	cpu.LoadProgram(program)
 
-	// // Step the CPU
-	// for !cpu.Step() {
-	// 	cpu.Debug(false)
+	// Step the CPU
+	for !cpu.Step() {
+		cpu.Debug(false)
 
-	// 	// Wait for user input
-	// 	fmt.Scanln()
-	// }
+		// Wait for user input
+		// fmt.Scanln()
+
+		time.Sleep(200 * time.Millisecond)
+	}
 
 	// Run the CPU
-	cpu.Run()
+	// cpu.Run()
 }

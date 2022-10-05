@@ -108,6 +108,9 @@ func (c *CPU) Execute(instruction uint64) {
 	// CMP_RR compares two registers
 	case CMP_RR:
 		c.CMP_RR()
+	// CMP_RI compares a register to an immediate
+	case CMP_RI:
+		c.CMP_RI()
 
 	// JEQ jumps to address if the last comparison was equal
 	case JEQ:

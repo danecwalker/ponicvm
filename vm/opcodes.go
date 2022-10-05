@@ -44,6 +44,8 @@ const (
 
 	// CMP_RR compares two registers
 	CMP_RR
+	// CMP_RI compares a register to an immediate
+	CMP_RI
 
 	// JEQ jumps to address if the last comparison was equal
 	JEQ

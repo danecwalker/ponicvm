@@ -35,7 +35,6 @@
 ## 📝 Table of Contents
 
 - [Getting Started](#getting_started)
-- [Roadmap](#roadmap)
 - [Authors](#authors)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -53,17 +52,14 @@ brew install go
 Clone the repo
 
 ```
-git clone https://github.com/danecwalker/ponic
+git clone https://github.com/danecwalker/ponicvm
 ```
 
-Run the compiler (currently uses the ./examples/example.pc)
+Run the VM
 
 ```
 go run .
 ```
-
-## Roadmap
-![Ponic Roadmap](./images/roadmap.png)
 
 ## ✍️ Authors <a name = "authors"></a>
 
